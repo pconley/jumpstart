@@ -45,6 +45,18 @@ def add_gems
   gem 'whenever', require: false
 end
 
+def add_gems_for_dev
+  gem_group :development, :test do
+    gem 'capybara', '~> 2.13'
+    gem 'selenium-webdriver'
+    gem 'rspec-rails', '~> 3.7'
+    gem 'rails-controller-testing'
+    gem 'factory_bot_rails'
+    gem 'colorize'
+    gem 'shiken', '~> 0.1.0'
+  end
+end
+
 def set_application_name
   # Add Application Name to Config
   environment "config.application_name = Rails.application.class.parent_name"
@@ -194,14 +206,20 @@ def stop_spring
   run "spring stop"
 end
 
+def add_rspec
+  generate "rspec:install"
+end
+
 # Main setup
 add_template_repository_to_source_path
 
 add_gems
+add_gems_for_dev
 
 after_bundle do
   set_application_name
   stop_spring
+  add_rspec # early so the generator works during remaining setup
   add_users
   add_bootstrap
   add_sidekiq
