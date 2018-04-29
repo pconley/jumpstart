@@ -1,3 +1,4 @@
+require 'yaml'
 require "fileutils"
 require "shellwords"
 
@@ -210,6 +211,11 @@ def add_rspec
   generate "rspec:install"
 end
 
+def add_webtests
+  directory "webtests", force: true  # copies webtest files
+  prepend_to_file "webtests/pages/base_page.rb", "APPNAME = '#{app_name}'\n\n"
+end
+
 # Main setup
 add_template_repository_to_source_path
 
@@ -231,6 +237,18 @@ after_bundle do
 
   copy_templates
 
+  # start the database if this was setup using postgres
+  dbconfig = YAML.load_file('config/database.yml')
+  adapter = dbconfig['default']['adapter']
+  if adapter == 'postgresql'
+    puts "*** Copy database utilities"
+    directory "pg", force: true
+    puts "*** Initializing PG Database"
+    run ". ./pg/init_db.sh"
+    puts "*** Starting PG Database"
+    run ". ./pg/start_db.sh"
+  end
+
   # Migrate
   rails_command "db:create"
   rails_command "db:migrate"
@@ -240,8 +258,24 @@ after_bundle do
 
   add_whenever
 
+  add_webtests
 
   git :init
+  if adapter == 'postgresql'
+    append_to_file '.gitignore', "\npg/data\npg/logfile\n"
+    puts "*** Stoping PG Database"
+    run ". ./pg/stop_db.sh"
+
+  end
   git add: "."
   git commit: %Q{ -m 'Initial commit' }
+
+  puts "\n\n"
+  puts "************************************************"
+  puts "*  some final message... like DB IS STOPPED"
+  puts "************************************************"
+  puts "cd #{app_name}"
+  puts ". ./pg/start_db.sh"
+  puts "rails s"
+
 end

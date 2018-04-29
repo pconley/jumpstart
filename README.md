@@ -1,6 +1,6 @@
 # Rails Jumpstart
 
-It's like Laravel Spark, for Rails. All your Rails apps should start off with a bunch of great defaults.
+My branch of Jumpstart that adds 
 
 **Note:** Requires Rails 5.2
 
@@ -10,14 +10,13 @@ Jumpstart is a Rails template, so you pass it in as an option when creating a ne
 
 #### Creating a new app
 
-```bash
-rails new myapp -d postgresql -m https://raw.githubusercontent.com/excid3/jumpstart/master/template.rb
-```
 
-Or if you have downloaded this repo, you can reference template.rb locally:
 
 ```bash
-rails new myapp -d postgresql -m template.rb
+
+postgres -D /usr/local/pgsql/data >logfile 2>&1 &
+
+rails new jump999 -T -d postgresql -m path/to/jumpstart/template.rb
 ```
 
 #### Cleaning up
