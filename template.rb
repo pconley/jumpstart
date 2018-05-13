@@ -117,8 +117,10 @@ end
 
 def copy_templates
   directory "app", force: true
+  directory "db", force: true
   directory "config", force: true
   directory "lib", force: true
+  directory "spec", force: true
 
   route "get '/terms', to: 'home#terms'"
   route "get '/privacy', to: 'home#privacy'"
@@ -252,6 +254,7 @@ after_bundle do
   # Migrate
   rails_command "db:create"
   rails_command "db:migrate"
+  rails_command "db:seed" # admin user!
 
   # Migrations must be done before this
   add_administrate

@@ -27,3 +27,9 @@ spring stop
 cd ..
 rm -rf myapp
 ```
+
+
+### TODO
+
+-- add complete rspecs
+-- add complete webtests
