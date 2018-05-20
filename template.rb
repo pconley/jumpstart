@@ -275,10 +275,14 @@ after_bundle do
 
   puts "\n\n"
   puts "************************************************"
-  puts "*  some final message... like DB IS STOPPED"
+  puts "*  Final notes"
   puts "************************************************"
   puts "cd #{app_name}"
   puts ". ./pg/start_db.sh"
+  puts "rspec spec"
   puts "rails s"
+  puts "rspec webtests  # rails server must be running"
+  puts "browse to localhost:3000"
+  puts "login as admin@test.com / password"
 
 end

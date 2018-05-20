@@ -10,13 +10,10 @@ Jumpstart is a Rails template, so you pass it in as an option when creating a ne
 
 #### Creating a new app
 
-
+From the Jumpstart directory...
 
 ```bash
-
-postgres -D /usr/local/pgsql/data >logfile 2>&1 &
-
-rails new jump999 -T -d postgresql -m path/to/jumpstart/template.rb
+rails new jump999 -T -d postgresql -m jumpstart/template.rb
 ```
 
 #### Cleaning up
@@ -27,6 +24,23 @@ spring stop
 cd ..
 rm -rf myapp
 ```
+
+### Key Tech
+
+-- ruby and rails
+-- rspec, shiken, selenium
+-- devise for auth
+-- webpack 
+
+
+### Heroku
+heroku login
+heroku create
+-- failed needed a devise secret key... comment out secret key in devise initializer
+
+heroku run rake db:migrate
+heroku run rake db:seed
+heroku open
 
 
 ### TODO
