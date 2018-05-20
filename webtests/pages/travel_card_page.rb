@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "travel_base_page.rb"
 
 class TravelCardPage < TravelBasePage

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "public_page.rb"
 
 class HomePage < PublicPage

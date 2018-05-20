@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'travel_login_page.rb'
 require 'travel_flight_page.rb'
 require 'travel_passenger_page.rb'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BasePage < SK::Page
   
   def initialize(page)
