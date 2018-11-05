@@ -8,6 +8,20 @@ It's like Laravel Spark, for Rails. All your Rails apps should start off with a 
 
 Jumpstart is a Rails template, so you pass it in as an option when creating a new app.
 
+
+#### Running PG (requried)
+
+Start manually:
+
+pg_ctl -D /usr/local/var/postgres start
+
+Stop manually:
+
+pg_ctl -D /usr/local/var/postgres stop
+
+
+
+
 #### Creating a new app
 
 ```bash
