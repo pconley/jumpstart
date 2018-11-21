@@ -11,7 +11,7 @@ describe "Travel Card Page" do
     $TravelPassengerPage.fill_passenger_details
     expect($TravelCardPage).to be_present
 	end
-  
+
   after :each do
 		TravelSession.stop
   end
@@ -19,7 +19,7 @@ describe "Travel Card Page" do
 	it "Has A Title" do
 		expect(SK::Browser.title).to eq("Agile Travel")
 	end
-  
+
 	it "Must Contain The Labels" do
 		expect(SK::Browser).to have_content("Pay by Credit Card")
 		expect(SK::Browser).to have_content("Card type: ")

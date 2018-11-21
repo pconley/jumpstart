@@ -146,6 +146,10 @@ def add_foreman
   copy_file "Procfile"
 end
 
+def add_rubocop
+  copy_file ".rubocop.yml"
+end
+
 def add_announcements
   generate "model Announcement published_at:datetime announcement_type name description:text"
   route "resources :announcements, only: [:index]"
@@ -214,7 +218,7 @@ def add_rspec
 end
 
 def add_webtests
-  directory "webtests", force: true  # copies webtest files
+  directory "webtests", force: true, :exclude_pattern => /.*\.rx/
   prepend_to_file "webtests/pages/base_page.rb", "APPNAME = '#{app_name}'\n\n"
 end
 
@@ -232,6 +236,7 @@ after_bundle do
   add_bootstrap
   add_sidekiq
   add_foreman
+  add_rubocop
   add_webpack
   add_announcements
   add_notifications
@@ -278,11 +283,13 @@ after_bundle do
   puts "*  Final notes"
   puts "************************************************"
   puts "cd #{app_name}"
-  puts ". ./pg/start_db.sh"
-  puts "rspec spec"
+  puts "sh pg/start_db.sh"
   puts "rails s"
-  puts "rspec webtests  # rails server must be running"
   puts "browse to localhost:3000"
   puts "login as admin@test.com / password"
+  puts "\nin the other tab..."
+  puts "rspec spec"
+  puts "rspec webtests"
+  puts "rubocop --format offenses"
 
 end

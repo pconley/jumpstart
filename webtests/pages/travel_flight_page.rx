@@ -3,15 +3,15 @@
 require_relative "travel_base_page.rb"
 
 class TravelFlightPage < TravelBasePage
-  
+
   def initialize()
-    super('flights/start') 
+    super('flights/start')
   end
-  
+
 	def present?
     self.here? 'Select Flight'
 	end
-  
+
   def trip_type
     SK::RadioSet.new({name: 'tripType'})
   end
@@ -36,8 +36,8 @@ class TravelFlightPage < TravelBasePage
   def continue_button
     SK::Browser.find({ type: "submit" })
   end
-  
-  
+
+
   def fill_flight_return_details
       # trace('adding twoway trip details:  start')
       trip_type.select('return')
@@ -47,23 +47,23 @@ class TravelFlightPage < TravelBasePage
       depart_month.select("May 2016")
       return_day.select("15")
       return_month.select("June 2016")
-      continue_button.click()    
-      sleep 3  
+      continue_button.click()
+      sleep 3
       # trace('adding twowy trip details:  finish')
   end
-  
+
   def fill_flight_oneway_details
       # trace('adding oneway trip details:  start')
-      trip_type.select('oneway')  
+      trip_type.select('oneway')
       orig_port.select("New York")
       dest_port.select("Sydney")
       depart_day.select("15")
       depart_month.select("September 2016")
       continue_button.click()
       sleep 3
-      # trace('adding oneway trip details:  finish')   
+      # trace('adding oneway trip details:  finish')
   end
-  
+
 end
 
 $TravelFlightPage = TravelFlightPage.new()

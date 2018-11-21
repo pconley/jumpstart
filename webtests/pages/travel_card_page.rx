@@ -3,19 +3,19 @@
 require_relative "travel_base_page.rb"
 
 class TravelCardPage < TravelBasePage
-    
+
 	def initialize()
     # note there is not really a seperate credt card
     # page, so the url is the same as the passenger page
-    super('flights/passenger') 
+    super('flights/passenger')
   end
-  
+
 	def present?
     # but we know we are here if the URLs match
     # AND the specific text is present on the page
     self.here? 'Pay by Credit Card'
 	end
-  
+
   def card_number
     SK::Field.new({name: 'card_number'})
   end
@@ -30,8 +30,8 @@ class TravelCardPage < TravelBasePage
   end
   def pay_button_el
     SK::Browser.find({ type: "submit" })
-  end 
-    
+  end
+
   def fill_card_details(card)
     card_type.select(card)
     card_number.set("1234567813246380")
@@ -40,7 +40,7 @@ class TravelCardPage < TravelBasePage
     pay_button_el.click()
     sleep 6
   end
-    
+
 end
 
 $TravelCardPage = TravelCardPage.new()

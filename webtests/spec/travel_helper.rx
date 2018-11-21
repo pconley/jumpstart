@@ -22,15 +22,15 @@ $good_pass  = "testwise"
 RSpec.configure do |config|
 
   config.before :suite do |x|
-     trace "before travel suite" 
-     SK::init()    
+     trace "before travel suite"
+     SK::init()
   end
-   
+
   config.after :suite do |x|
     trace "after travel suite"
     SK::quit()
   end
-          
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end

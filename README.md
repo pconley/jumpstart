@@ -25,6 +25,10 @@ cd ..
 rm -rf myapp
 ```
 
+### rubocop
+
+rubocop --format offenses webtests
+
 ### Key Tech
 
 -- ruby and rails

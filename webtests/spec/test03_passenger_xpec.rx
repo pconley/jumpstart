@@ -10,7 +10,7 @@ describe "Travel Passenger Page" do
     expect($TravelFlightPage).to be_present
     $TravelFlightPage.fill_flight_return_details
   end
-  
+
   after :each do
 	TravelSession.stop
   end
@@ -18,7 +18,7 @@ describe "Travel Passenger Page" do
 	it "has the expected title" do
 		expect(SK::Browser.title).to eq("Agile Travel")
 	end
-  
+
 	it "Must Contain The Labels" do
 		expect(SK::Browser).to have_content("Passenger Details")
 		expect(SK::Browser).to have_content("First name:")

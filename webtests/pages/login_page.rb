@@ -3,11 +3,11 @@
 require "public_page.rb"
 
 class LoginPage < PublicPage
-    
+
   def initialize()
-    super('users/sign_in') 
+    super('users/sign_in')
   end
-  
+
   def email_field
     SK::Field.new({ id: 'user_email' })
   end
@@ -17,13 +17,13 @@ class LoginPage < PublicPage
   def login_button
     SK::Button.new({ type: "submit" })
   end
-  
+
   def fill_and_submit(user=$good_user, pass=$good_pass)
-  	email_field.set(user)
-  	password_field.set(pass)
+    email_field.set(user)
+    password_field.set(pass)
     login_button.click(2) # and wait 2 secs
   end
-  
+
 end
 
 $LoginPage = LoginPage.new()

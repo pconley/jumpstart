@@ -21,7 +21,7 @@ RSpec.describe Announcement, type: :model do
   end
 
   it "requires a name" do
-  	subject.name = nil
+    subject.name = nil
     expect(subject).to_not be_valid
     expect(subject.save).to eq(false)
     expect(subject.errors.full_messages[0]).to eq("Name can't be blank")
@@ -29,7 +29,7 @@ RSpec.describe Announcement, type: :model do
   end
 
     it "requires a name" do
-  	subject.name = nil
+    subject.name = nil
     expect(subject).to_not be_valid
     expect(subject.save).to eq(false)
     expect(subject.errors.full_messages[0]).to eq("Name can't be blank")
@@ -37,7 +37,7 @@ RSpec.describe Announcement, type: :model do
   end
 
   it "requires a description" do
-  	subject.description = nil
+    subject.description = nil
     expect(subject).to_not be_valid
     expect(subject.save).to eq(false)
     expect(subject.errors.full_messages[0]).to eq("Description can't be blank")
